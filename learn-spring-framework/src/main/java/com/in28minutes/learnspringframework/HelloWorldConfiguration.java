@@ -1,7 +1,9 @@
 package com.in28minutes.learnspringframework;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 /**
  * 이 클래스는 Spring Bean을 정의하는 Java 기반 설정 클래스입니다.
@@ -42,16 +44,31 @@ public class HelloWorldConfiguration {
 	}
 	
 	@Bean
-	public Person person3Parameters(String name, int age, Address address3) { // name, age, address2
-		return new Person(name, age, address3); 
+	public Person person3Parameters(String name, int age, Address address2) { // name, age, address2
+		return new Person(name, age, address2); 
+	}
+	
+	@Bean
+	@Primary
+	// No qualifiying bean of type 'com.in28minutes.learnspringframework.Address'
+	// available: expected single matching bean but found 2: address2, address3
+	public Person person4Parameters(String name, int age, Address address) { 
+		return new Person(name, age, address); 
+	}
+	
+	@Bean
+	public Person person5Qulifier(String name, int age, @Qualifier("address3qualifier") Address address) { 
+		return new Person(name, age, address); 
 	}
 	
 	@Bean(name= "address2")
+	@Primary
 	public Address address() {
 		return new Address("Baker Street", "London");
 	}
 	
 	@Bean(name="address3")
+	@Qualifier("address3qualifier")
 	public Address address3() {
 		return new Address("Motinagar", "Hyderabad");
 	}

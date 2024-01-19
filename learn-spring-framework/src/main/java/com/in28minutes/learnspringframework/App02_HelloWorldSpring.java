@@ -1,5 +1,7 @@
 package com.in28minutes.learnspringframework;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 /**
  *  Spring Context: Spring에서 Context는 애플리케이션의 객체들 간의 관계, 설정 및 라이프사이클을 관리하는데 사용되는 컨테이너입니다. 
@@ -30,7 +32,14 @@ public class App02_HelloWorldSpring {
 		System.out.println(context.getBean("person3Parameters"));
 		
 		System.out.println(context.getBean("address2"));
-		// System.out.println(context.getBean(Address.class));
+		System.out.println(context.getBean(Person.class)); 
+		System.out.println(context.getBean(Address.class));
+		System.out.println(context.getBean("person5Qulifier"));
+		System.out.println("");
+		
+		
+		Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+		
 	}
 
 }
