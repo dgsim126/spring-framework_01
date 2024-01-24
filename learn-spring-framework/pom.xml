@@ -21,6 +21,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+		
+		<!-- 여기부터 -->
+		<dependency>
+			<groupId>jakarta.inject</groupId>
+			<artifactId>jakarta.inject-api</artifactId>
+			<version>2.0.1.MR</version>
+		</dependency>
+		<!-- 여기까지 -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
