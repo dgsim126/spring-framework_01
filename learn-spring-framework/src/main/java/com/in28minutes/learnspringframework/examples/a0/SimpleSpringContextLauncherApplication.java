@@ -12,7 +12,7 @@ public class SimpleSpringContextLauncherApplication {
 	
 	public static void main(String[] args) {
 		
-		try(var context= new AnnotationConfigApplicationContext(SimpleSpringContextLauncherApplication.class);){
+		try(var context= new AnnotationConfigApplicationContext(SimpleSpringContextLauncherApplication.class)){
 			Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
 			
 		}
